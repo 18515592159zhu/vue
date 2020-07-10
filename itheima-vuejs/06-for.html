@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vuejs测试</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="user in users">
+            {{user.name}} -- {{user.age}} -- {{user.gender}}
+        </li>
+    </ul>
+
+    <hr>
+
+    <ul>
+        <li v-for="(user,index) in users" :key="index">
+            {{index}} -- {{user.name}} -- {{user.age}} -- {{user.gender}}
+        </li>
+    </ul>
+
+    <hr>
+
+    <ul>
+        <!--1个参数时，得到的是对象的值-->
+        <li v-for="value in person">
+            {{value}}
+        </li>
+    </ul>
+    <hr>
+    <ul>
+        <!--2个参数时，第一个是值，第二个是键-->
+        <li v-for="(value,key ) in person">
+            {{value}}--{{key}}
+        </li>
+    </ul>
+    <hr>
+    <ul>
+        <!--3个参数时，第三个是索引，从0开始-->
+        <li v-for="(value,key,index ) in person">
+            {{value}}--{{key}} -- {{index}}
+        </li>
+    </ul>
+
+</div>
+<script type="text/javascript">
+    let app = new Vue({
+        el: "#app",
+        data: {
+            users: [
+                {"name": "小明", "age": 13, "gender": "男"},
+                {"name": "小红", "age": 13, "gender": "女"},
+                {"name": "小绿", "age": 4, "gender": "男"}
+            ],
+            person: {"name": "CSDN博客", "age": 13, "gender": "男", "address": "中国"}
+        }
+    });
+</script>
+</body>
+</html>
